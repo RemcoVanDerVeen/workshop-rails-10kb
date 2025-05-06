@@ -49,7 +49,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_06_132159) do
     t.string "rarity"
     t.integer "value"
     t.boolean "equipped"
-    t.bigint "hero_id", null: false
+    t.bigint "hero_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["hero_id"], name: "index_items_on_hero_id"
@@ -75,9 +75,11 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_06_132159) do
     t.string "reward_type"
     t.integer "amount"
     t.bigint "quest_id", null: false
-    t.bigint "item_id", null: false
+    t.bigint "item_id"
+    t.bigint "hero_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["hero_id"], name: "index_quest_rewards_on_hero_id"
     t.index ["item_id"], name: "index_quest_rewards_on_item_id"
     t.index ["quest_id"], name: "index_quest_rewards_on_quest_id"
   end
@@ -108,6 +110,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_06_132159) do
   add_foreign_key "hero_skills", "skills"
   add_foreign_key "heros", "guilds"
   add_foreign_key "items", "heros"
+  add_foreign_key "quest_rewards", "heros"
   add_foreign_key "quest_rewards", "items"
   add_foreign_key "quest_rewards", "quests"
   add_foreign_key "quests", "heros"

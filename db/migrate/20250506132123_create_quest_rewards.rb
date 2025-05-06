@@ -4,7 +4,8 @@ class CreateQuestRewards < ActiveRecord::Migration[8.0]
       t.string :reward_type
       t.integer :amount
       t.references :quest, null: false, foreign_key: true
-      t.references :item, null: false, foreign_key: true
+      t.references :item, null: true, foreign_key: true
+      t.references :hero, null: true, foreign_key: true
 
       t.timestamps
     end

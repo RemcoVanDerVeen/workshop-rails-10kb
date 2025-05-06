@@ -6,7 +6,7 @@ class CreateItems < ActiveRecord::Migration[8.0]
       t.string :rarity
       t.integer :value
       t.boolean :equipped
-      t.references :hero, null: false, foreign_key: true
+      t.references :hero, null: true, foreign_key: true
 
       t.timestamps
     end
