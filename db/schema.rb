@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_06_132123) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_06_132159) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -62,6 +62,13 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_06_132123) do
     t.integer "attack_power"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "monsters_quests", id: false, force: :cascade do |t|
+    t.bigint "monster_id", null: false
+    t.bigint "quest_id", null: false
+    t.index ["monster_id", "quest_id"], name: "index_monsters_quests_on_monster_id_and_quest_id"
+    t.index ["quest_id", "monster_id"], name: "index_monsters_quests_on_quest_id_and_monster_id"
   end
 
   create_table "quest_rewards", force: :cascade do |t|
