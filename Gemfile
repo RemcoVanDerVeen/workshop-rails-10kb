@@ -51,6 +51,9 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem 'rubocop-rails-omakase', require: false
+
+  gem 'rspec-rails'
+  gem 'rubocop-rspec'
 end
 
 group :development do
@@ -60,6 +63,6 @@ end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-  gem 'capybara'
-  gem 'selenium-webdriver'
+  # gem 'capybara'
+  # gem 'selenium-webdriver'
 end
