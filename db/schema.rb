@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_06_132028) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_06_132054) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -20,6 +20,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_06_132028) do
     t.date "founded_on"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "hero_skills", force: :cascade do |t|
+    t.bigint "hero_id", null: false
+    t.bigint "skill_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["hero_id"], name: "index_hero_skills_on_hero_id"
+    t.index ["skill_id"], name: "index_hero_skills_on_skill_id"
   end
 
   create_table "heros", force: :cascade do |t|
@@ -77,6 +86,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_06_132028) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "hero_skills", "heros"
+  add_foreign_key "hero_skills", "skills"
   add_foreign_key "heros", "guilds"
   add_foreign_key "items", "heros"
   add_foreign_key "quests", "heros"
