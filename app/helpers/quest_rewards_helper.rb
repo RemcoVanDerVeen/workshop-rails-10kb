@@ -1,0 +1,2 @@
+module QuestRewardsHelper
+end
