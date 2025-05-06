@@ -5,7 +5,7 @@ module HasIntroduction
 
   included do
     validates :name, presence: true
-    validate :dirty_name_regex_validation
+    validate :dirty_name_regex_validation, on: :update
   end
 
   def introduce

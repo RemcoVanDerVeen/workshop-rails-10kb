@@ -57,9 +57,9 @@ HeroSkill.create!([
 # Items
 Rails.logger.debug 'Creating items...'
 items = Item.create!([
-                       { name: 'Elven Bow', item_type: 'Weapon', rarity: 'Rare', value: 150, equipped: true, hero: heroes[0] },
-                       { name: 'Steel Shield', item_type: 'Armor', rarity: 'Common', value: 60, equipped: true, hero: heroes[1] },
-                       { name: 'Arcane Robe', item_type: 'Armor', rarity: 'Uncommon', value: 90, equipped: true, hero: nil }
+                       { name: 'Elven Bow', item_type: 'weapon', rarity: 'rare', value: 150, equipped: true, hero: heroes[0] },
+                       { name: 'Steel Shield', item_type: 'armor', rarity: 'common', value: 60, equipped: true, hero: heroes[1] },
+                       { name: 'Arcane Robe', item_type: 'armor', rarity: 'uncommon', value: 90, equipped: true, hero: nil }
                      ])
 
 # Monsters
@@ -73,8 +73,8 @@ monsters = Monster.create!([
 # Quests
 Rails.logger.debug 'Creating quests...'
 quests = Quest.create!([
-                         { title: 'Rescue the Village', difficulty: 'Medium', reward_gold: 200, status: 'completed', assigned_at: 5.days.ago, completed_at: 3.days.ago, hero: heroes[0] },
-                         { title: 'Defeat the Cave Troll', difficulty: 'Hard', reward_gold: 500, status: 'in_progress', assigned_at: 1.day.ago, hero: heroes[1] }
+                         { title: 'Rescue the Village', difficulty: 'medium', reward_gold: 200, status: 'completed', assigned_at: 5.days.ago, completed_at: 3.days.ago, hero: heroes[0] },
+                         { title: 'Defeat the Cave Troll', difficulty: 'hard', reward_gold: 500, status: 'in_progress', assigned_at: 1.day.ago, hero: heroes[1] }
                        ])
 
 # Monster <-> Quest join table
