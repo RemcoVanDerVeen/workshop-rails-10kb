@@ -1,24 +1,29 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Setup
+How to set up this application:
+```bash
+docker compose build --no-cache
+docker compose run --rm backend bundle install
+docker compose run --rm backend bundle exec rails db:create db:migrate db:seed
+docker compose up backend
+```
 
-Things you may want to cover:
+The application will be available at `localhost:3000`.
 
-* Ruby version
 
-* System dependencies
+## The Goal
+All tests are failing. Use whatever you need to fix tests.
 
-* Configuration
+Run tests:
+```bash
+docker compose run --rm backend bundle exec rspec
+```
 
-* Database creation
+Run linter:
+```bash
+docker compose run --rm backend bundle exec rubocop
+```
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Do not edit the .rubocop.yml or any of the test files if you wish to play fair.
+Bonus points for inventing new greasy ways to pollute this app.

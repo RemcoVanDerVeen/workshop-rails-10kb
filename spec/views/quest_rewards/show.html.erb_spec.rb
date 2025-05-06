@@ -1,16 +1,18 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "quest_rewards/show", type: :view do
-  before(:each) do
+RSpec.describe 'quest_rewards/show', type: :view do
+  before do
     assign(:quest_reward, QuestReward.create!(
-      reward_type: "Reward Type",
-      amount: 2,
-      quest: nil,
-      item: nil
-    ))
+                            reward_type: 'Reward Type',
+                            amount: 2,
+                            quest: nil,
+                            item: nil
+                          ))
   end
 
-  it "renders attributes in <p>" do
+  it 'renders attributes in <p>' do
     render
     expect(rendered).to match(/Reward Type/)
     expect(rendered).to match(/2/)

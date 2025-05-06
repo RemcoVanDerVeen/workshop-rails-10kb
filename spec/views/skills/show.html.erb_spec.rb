@@ -1,16 +1,18 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "skills/show", type: :view do
-  before(:each) do
+RSpec.describe 'skills/show', type: :view do
+  before do
     assign(:skill, Skill.create!(
-      name: "Name",
-      element: "Element",
-      mana_cost: 2,
-      level_required: 3
-    ))
+                     name: 'Name',
+                     element: 'Element',
+                     mana_cost: 2,
+                     level_required: 3
+                   ))
   end
 
-  it "renders attributes in <p>" do
+  it 'renders attributes in <p>' do
     render
     expect(rendered).to match(/Name/)
     expect(rendered).to match(/Element/)

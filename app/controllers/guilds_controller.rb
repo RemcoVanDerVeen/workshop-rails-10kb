@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class GuildsController < ApplicationController
-  before_action :set_guild, only: %i[ show edit update destroy ]
+  before_action :set_guild, only: %i[show edit update destroy]
 
   # GET /guilds or /guilds.json
   def index
@@ -7,8 +9,7 @@ class GuildsController < ApplicationController
   end
 
   # GET /guilds/1 or /guilds/1.json
-  def show
-  end
+  def show; end
 
   # GET /guilds/new
   def new
@@ -16,8 +17,7 @@ class GuildsController < ApplicationController
   end
 
   # GET /guilds/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /guilds or /guilds.json
   def create
@@ -25,7 +25,7 @@ class GuildsController < ApplicationController
 
     respond_to do |format|
       if @guild.save
-        format.html { redirect_to @guild, notice: "Guild was successfully created." }
+        format.html { redirect_to @guild, notice: 'Guild was successfully created.' }
         format.json { render :show, status: :created, location: @guild }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class GuildsController < ApplicationController
   def update
     respond_to do |format|
       if @guild.update(guild_params)
-        format.html { redirect_to @guild, notice: "Guild was successfully updated." }
+        format.html { redirect_to @guild, notice: 'Guild was successfully updated.' }
         format.json { render :show, status: :ok, location: @guild }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,19 +52,20 @@ class GuildsController < ApplicationController
     @guild.destroy!
 
     respond_to do |format|
-      format.html { redirect_to guilds_path, status: :see_other, notice: "Guild was successfully destroyed." }
+      format.html { redirect_to guilds_path, status: :see_other, notice: 'Guild was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_guild
-      @guild = Guild.find(params.expect(:id))
-    end
 
-    # Only allow a list of trusted parameters through.
-    def guild_params
-      params.expect(guild: [ :name, :motto, :founded_on ])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_guild
+    @guild = Guild.find(params.expect(:id))
+  end
+
+  # Only allow a list of trusted parameters through.
+  def guild_params
+    params.expect(guild: %i[name motto founded_on])
+  end
 end

@@ -1,17 +1,19 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "quests/show", type: :view do
-  before(:each) do
+RSpec.describe 'quests/show', type: :view do
+  before do
     assign(:quest, Quest.create!(
-      title: "Title",
-      difficulty: "Difficulty",
-      reward_gold: 2,
-      status: "Status",
-      hero: nil
-    ))
+                     title: 'Title',
+                     difficulty: 'Difficulty',
+                     reward_gold: 2,
+                     status: 'Status',
+                     hero: nil
+                   ))
   end
 
-  it "renders attributes in <p>" do
+  it 'renders attributes in <p>' do
     render
     expect(rendered).to match(/Title/)
     expect(rendered).to match(/Difficulty/)

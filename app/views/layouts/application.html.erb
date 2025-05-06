@@ -23,6 +23,18 @@
   </head>
 
   <body>
+    <nav class="navbar">
+      <div class="navbar-container">
+        <%= link_to "Home", root_path, class: "nav-link" %>
+        <%= link_to "Heroes", heros_path, class: "nav-link" %>
+        <%= link_to "Quests", quests_path, class: "nav-link" %>
+        <%= link_to "Quest Rewards", quest_rewards_path, class: "nav-link" %>
+        <%= link_to "Skills", skills_path, class: "nav-link" %>
+        <%= link_to "Items", items_path, class: "nav-link" %>
+        <%= link_to "Monsters", monsters_path, class: "nav-link" %>
+      </div>
+    </nav>
+    
     <%= yield %>
   </body>
 </html>

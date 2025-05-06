@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class MonstersController < ApplicationController
-  before_action :set_monster, only: %i[ show edit update destroy ]
+  before_action :set_monster, only: %i[show edit update destroy]
 
   # GET /monsters or /monsters.json
   def index
@@ -7,8 +9,7 @@ class MonstersController < ApplicationController
   end
 
   # GET /monsters/1 or /monsters/1.json
-  def show
-  end
+  def show; end
 
   # GET /monsters/new
   def new
@@ -16,8 +17,7 @@ class MonstersController < ApplicationController
   end
 
   # GET /monsters/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /monsters or /monsters.json
   def create
@@ -25,7 +25,7 @@ class MonstersController < ApplicationController
 
     respond_to do |format|
       if @monster.save
-        format.html { redirect_to @monster, notice: "Monster was successfully created." }
+        format.html { redirect_to @monster, notice: 'Monster was successfully created.' }
         format.json { render :show, status: :created, location: @monster }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class MonstersController < ApplicationController
   def update
     respond_to do |format|
       if @monster.update(monster_params)
-        format.html { redirect_to @monster, notice: "Monster was successfully updated." }
+        format.html { redirect_to @monster, notice: 'Monster was successfully updated.' }
         format.json { render :show, status: :ok, location: @monster }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,19 +52,20 @@ class MonstersController < ApplicationController
     @monster.destroy!
 
     respond_to do |format|
-      format.html { redirect_to monsters_path, status: :see_other, notice: "Monster was successfully destroyed." }
+      format.html { redirect_to monsters_path, status: :see_other, notice: 'Monster was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_monster
-      @monster = Monster.find(params.expect(:id))
-    end
 
-    # Only allow a list of trusted parameters through.
-    def monster_params
-      params.expect(monster: [ :name, :monster_type, :hit_points, :attack_power ])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_monster
+    @monster = Monster.find(params.expect(:id))
+  end
+
+  # Only allow a list of trusted parameters through.
+  def monster_params
+    params.expect(monster: %i[name monster_type hit_points attack_power])
+  end
 end
