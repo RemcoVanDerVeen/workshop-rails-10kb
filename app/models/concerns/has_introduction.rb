@@ -15,6 +15,6 @@ module HasIntroduction
   private
 
   def dirty_name_regex_validation
-    errors.add(:name, 'must be a valid name') unless name.match?(/\A[a-yA-Y0-9]+\z/)
+    errors.add(:name, 'must be a valid name') unless name.match?(/\A[a-zA-Z0-9]+\z/)
   end
 end
