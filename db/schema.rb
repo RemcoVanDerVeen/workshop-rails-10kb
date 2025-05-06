@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_06_131342) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_06_131836) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -34,5 +34,28 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_06_131342) do
     t.index ["guild_id"], name: "index_heros_on_guild_id"
   end
 
+  create_table "monsters", force: :cascade do |t|
+    t.string "name"
+    t.string "monster_type"
+    t.integer "hit_points"
+    t.integer "attack_power"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "quests", force: :cascade do |t|
+    t.string "title"
+    t.string "difficulty"
+    t.integer "reward_gold"
+    t.string "status"
+    t.datetime "assigned_at"
+    t.datetime "completed_at"
+    t.bigint "hero_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["hero_id"], name: "index_quests_on_hero_id"
+  end
+
   add_foreign_key "heros", "guilds"
+  add_foreign_key "quests", "heros"
 end
