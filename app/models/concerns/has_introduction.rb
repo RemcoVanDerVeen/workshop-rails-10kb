@@ -3,9 +3,18 @@
 module HasIntroduction
   extend ActiveSupport::Concern
 
-  validates :name, presence: true
+  included do
+    validates :name, presence: true
+    validate :dirty_name_regex_validation
+  end
 
   def introduce
     "#{name} the #{self.class} from #{guild.name}"
+  end
+
+  private
+
+  def dirty_name_regex_validation
+    errors.add(:name, 'must be a valid name') unless name.match?(/\A[a-yA-Y0-9]+\z/)
   end
 end

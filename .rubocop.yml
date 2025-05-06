@@ -14,14 +14,15 @@ require:
 
 AllCops:
   NewCops: disable
+  SuggestExtensions: false
   TargetRubyVersion: 3.4
   TargetRailsVersion: 8.0
 
 BadPractice/NoWellPlacedConcerns:
   Enabled: true
-#   Exclude:
-#     - "app/models/application_record.rb"
-#     - "app/models/concerns/**/*.rb"
+  Exclude:
+    - "app/models/application_record.rb"
+    - "app/models/concerns/**/*.rb"
 
 Layout/LineLength:
   Enabled: false
