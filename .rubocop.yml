@@ -17,6 +17,9 @@ AllCops:
   SuggestExtensions: false
   TargetRubyVersion: 3.4
   TargetRailsVersion: 8.0
+  Exclude:
+    - "bin/bundle"
+    - "db/*.rb"
 
 BadPractice/NoWellPlacedConcerns:
   Enabled: true

@@ -10,7 +10,7 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-Rails.logger.debug 'Seeding data...'
+puts 'Seeding data...'
 
 # Clear old data
 QuestReward.delete_all
@@ -23,14 +23,14 @@ Hero.delete_all
 Guild.delete_all
 
 # Guilds
-Rails.logger.debug 'Creating guilds...'
+puts 'Creating guilds...'
 guilds = Guild.create!([
                          { name: 'Blazing Phoenix', motto: 'Rise from the ashes', founded_on: 10.years.ago },
                          { name: 'Shadow Blades', motto: 'Swift and silent', founded_on: 5.years.ago }
                        ])
 
 # Heroes
-Rails.logger.debug 'Creating heroes...'
+puts 'Creating heroes...'
 heroes = Hero.create!([
                         { name: 'Aria Swiftwind', level: 12, player_class: 'Ranger', race: 'Elf', experience_points: 3200, guild: guilds[0] },
                         { name: 'Borin Stonehelm', level: 18, player_class: 'Warrior', race: 'Dwarf', experience_points: 7100, guild: guilds[1] },
@@ -38,7 +38,7 @@ heroes = Hero.create!([
                       ])
 
 # Skills
-Rails.logger.debug 'Creating skills...'
+puts 'Creating skills...'
 skills = Skill.create!([
                          { name: 'Fireball', element: 'Fire', mana_cost: 30, level_required: 5 },
                          { name: 'Healing Light', element: 'Holy', mana_cost: 20, level_required: 3 },
@@ -46,7 +46,7 @@ skills = Skill.create!([
                        ])
 
 # HeroSkills (join)
-Rails.logger.debug 'Assigning hero skills...'
+puts 'Assigning hero skills...'
 HeroSkill.create!([
                     { hero: heroes[0], skill: skills[2] },
                     { hero: heroes[1], skill: skills[0] },
@@ -55,7 +55,7 @@ HeroSkill.create!([
                   ])
 
 # Items
-Rails.logger.debug 'Creating items...'
+puts 'Creating items...'
 items = Item.create!([
                        { name: 'Elven Bow', item_type: 'weapon', rarity: 'rare', value: 150, equipped: true, hero: heroes[0] },
                        { name: 'Steel Shield', item_type: 'armor', rarity: 'common', value: 60, equipped: true, hero: heroes[1] },
@@ -63,7 +63,7 @@ items = Item.create!([
                      ])
 
 # Monsters
-Rails.logger.debug 'Creating monsters...'
+puts 'Creating monsters...'
 monsters = Monster.create!([
                              { name: 'Goblin Raider', monster_type: 'Goblin', hit_points: 50, attack_power: 8 },
                              { name: 'Cave Troll', monster_type: 'Troll', hit_points: 180, attack_power: 25 },
@@ -71,22 +71,22 @@ monsters = Monster.create!([
                            ])
 
 # Quests
-Rails.logger.debug 'Creating quests...'
+puts 'Creating quests...'
 quests = Quest.create!([
                          { title: 'Rescue the Village', difficulty: 'medium', reward_gold: 200, status: 'completed', assigned_at: 5.days.ago, completed_at: 3.days.ago, hero: heroes[0] },
                          { title: 'Defeat the Cave Troll', difficulty: 'hard', reward_gold: 500, status: 'in_progress', assigned_at: 1.day.ago, hero: heroes[1] }
                        ])
 
 # Monster <-> Quest join table
-Rails.logger.debug 'Creating monster <-> quest join table...'
+puts 'Creating monster <-> quest join table...'
 quests[0].monsters << monsters[0]
 quests[1].monsters << monsters[1]
 
 # Quest Rewards
-Rails.logger.debug 'Creating quest rewards...'
+puts 'Creating quest rewards...'
 QuestReward.create!([
                       { reward_type: 'gold', amount: 200, quest: quests[0] },
                       { reward_type: 'item', amount: 1, quest: quests[0], item: items[2] }
                     ])
 
-Rails.logger.debug 'Seeding complete!'
+puts 'Seeding complete!'
