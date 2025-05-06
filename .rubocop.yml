@@ -1,0 +1,37 @@
+# Omakase Ruby styling for Rails
+# inherit_gem: { rubocop-rails-omakase: rubocop.yml }
+
+# Add custom cops
+# require_relative 'lib/bad_practice/no_well_placed_concerns'
+
+plugins:
+  - rubocop-rails
+
+require:
+  - './lib/bad_practice/no_well_placed_concerns.rb'
+
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 3.4
+  TargetRailsVersion: 8.0
+
+BadPractice/NoWellPlacedConcerns:
+  Enabled: true
+#   Exclude:
+#     - "app/models/application_record.rb"
+#     - "app/models/concerns/**/*.rb"
+
+Layout/LineLength:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
